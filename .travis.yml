@@ -6,7 +6,7 @@ sudo: required
 services:
   - docker
 before_install:
-- curl -LO https://omnitruck.chef.io/install.sh && sudo bash ./install.sh -v 12.5.1
+- curl -L https://omnitruck.chef.io/install.sh | sudo bash -s -- -v 12.5.1
 - chef gem install kitchen-docker
 - chef gem list
 
