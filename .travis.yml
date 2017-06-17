@@ -1,0 +1,24 @@
+language: ruby
+cache: bundler
+rvm:
+- 2.1.5
+sudo: required
+services:
+  - docker
+before_install:
+- curl -L https://www.chef.io/chef/install.sh | sudo bash -s -- -v 12.5.1
+- chef gem install kitchen-docker
+- chef gem list
+
+script:
+- chef exec foodcritic -f any .
+- chef exec rubocop
+- export KITCHEN_LOCAL_YAML=.kitchen.docker.yml 
+- chef exec kitchen test
+notifications:
+  webhooks:
+    urls:
+      - 
+    on_success: change
+    on_failure: always
+    on_start: never

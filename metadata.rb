@@ -1,0 +1,7 @@
+name 'pagerduty_agent'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures pagerduty_agent_chef'
+long_description 'Installs/Configures pagerduty_agent_chef'
+version '0.1.0'
