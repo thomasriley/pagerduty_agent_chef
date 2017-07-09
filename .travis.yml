@@ -5,8 +5,11 @@ rvm:
 sudo: required
 services:
   - docker
+  
 before_install:
 - curl -L https://www.chef.io/chef/install.sh | sudo bash -s -- -v 12.5.1
+
+install:
 - chef gem install kitchen-docker
 - chef gem list
 
@@ -15,6 +18,7 @@ script:
 - chef exec rubocop
 - export KITCHEN_LOCAL_YAML=.kitchen.docker.yml 
 - chef exec kitchen test
+
 notifications:
   webhooks:
     urls:
